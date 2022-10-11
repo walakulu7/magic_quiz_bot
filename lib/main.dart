@@ -22,7 +22,6 @@ class MagicQuiz extends StatefulWidget {
 }
 
 class _MagicQuizState extends State<MagicQuiz> {
-
   int ballNumber = 3;
 
   @override
@@ -32,9 +31,12 @@ class _MagicQuizState extends State<MagicQuiz> {
         children: [
           Expanded(
             child: TextButton(
-              onPressed: (){
-                ballNumber = 1;
-                print('I got clicked');
+              onPressed: () {
+                setState(() {
+                    ballNumber = Random().nextInt(5) + 1;
+                    print('I got clicked on ball$ballNumber.png');
+                  },
+                );
               },
               child: Image.asset('images/ball$ballNumber.png'),
             ),
@@ -44,4 +46,3 @@ class _MagicQuizState extends State<MagicQuiz> {
     );
   }
 }
-
